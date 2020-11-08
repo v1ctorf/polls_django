@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Latest Polls</title>    
+</head>
+<body>
+    <h1>Poll</h1>
+    <h2>{{ question.question_text }}</h2>
+
+    <ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    {% endfor %}
+    </ul>
+    
+    <p><a href="{% url 'polls:detail' question.id %}">Vote again?</a></p>
+    <p><a href="{% url 'polls:index' %}">See All Polls</a></p>
+</body>
+
+</html>
+
